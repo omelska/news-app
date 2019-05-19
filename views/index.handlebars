@@ -1,0 +1,53 @@
+<div class="flex-wrap" id="articles">
+    {{#each articles}}
+    <div class="box item">
+
+
+        <img src="{{imageURL}}" alt="article's image" class="img itemImg" value="{{_id}}">
+
+
+        <a href="{{link}}">
+            <h2>{{headline}}</h2>
+        </a>
+
+    </div>
+
+    {{/each}}
+
+</div>
+
+<div class="left hide" id="comments">
+
+    <div id="display-comments" class="left"></div>
+    <div>
+        <a href="/">
+            <img src="./images/arrow.png" alt="go back" id="go-back">
+        </a>
+
+    </div>
+
+    <form>
+        <div class="card-header">
+            <div class="bottom-margin ">
+                <input type="text" placeholder="enter your name" id="name">
+            </div>
+
+            <div class="bottom-margin ">
+                <input type="text" placeholder="create username" id="username">
+            </div>
+
+            <div>
+                <textarea placeholder="leave your comment here" id="comment"></textarea>
+            </div>
+            <button class="btn btn-dark" type="submit" id="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<!--jQuery-->
+<script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+    crossorigin="anonymous"></script>
+
+<!-- JavaScript-->
+
+<script src="./java.js"></script>
