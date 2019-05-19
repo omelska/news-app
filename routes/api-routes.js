@@ -12,8 +12,9 @@ router.use((req, res, next) => {
 router.get("/scrape", (req, res) => {
   axios.get("https://www.vogue.com/fashion").then(response => {
     const $ = cheerio.load(response.data);
-    let result = {};
-    $("li.four-story--item").each(element => {
+
+    $("li.four-story--item").each((i, element) => {
+      let result = {};
       result.imageURL = $(element)
         .find("img")
         .attr("srcset");
@@ -23,14 +24,12 @@ router.get("/scrape", (req, res) => {
       result.link = $(element)
         .find("a.four-story--link")
         .attr("href");
-
+      console.log("RESULT", result);
       db.Article.create(result)
         .then(dbArticle => {
-          // View the added result in the console
           console.log(dbArticle);
         })
-        .catch(function(err) {
-          // If an error occurred, log it
+        .catch(err => {
           console.log(err);
         });
     });
@@ -87,6 +86,16 @@ router.post("/articles/:id", (req, res) => {
         res.json(err);
       });
   });
+});
+
+router.delete("/comments/:id", (req, res) => {
+  db.Comments.findByIdAndRemove({ _id: req.params.id })
+    .then(comment => {
+      res.json(comment);
+    })
+    .catch(err => {
+      res.json(err);
+    });
 });
 
 router.get("/comments", (req, res) => {

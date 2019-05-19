@@ -18,14 +18,8 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.get("/comments", (req, res) => {
-//   db.Comments.find({})
-//     .then(dbComments => {
-//       res.render("comments", { comments: dbComments });
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
+router.get("/comments", (req, res) => {
+  res.render("comments");
+});
 
 module.exports = router;

@@ -30,6 +30,11 @@ a:hover {
 
 h2 {
     font-size: 24px;
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+h3 {
+    font-family: 'Nanum Myeongjo', serif;
 }
 
 .hide {
@@ -71,6 +76,7 @@ h2 {
 }
 
 input {
+    padding: 5px;
     width: 45%;
     background: #333333;
     color: #fff;
@@ -78,6 +84,7 @@ input {
 }
 
 textarea {
+    padding: 5px;
     width: 45%;
     height: 30vh;
     background: #333333;
@@ -90,4 +97,19 @@ form {
 
 .bottom-margin {
     margin-bottom: 20px;
+}
+
+.btn-dark {
+    background: #333333;
+}
+
+.btn-dark:hover {
+    background: #1d1d1d;
+}
+
+.delete {
+    width: 20px;
+    height: auto;
+    position: absolute;
+    right: 30px;
 }

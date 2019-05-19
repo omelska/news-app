@@ -19,27 +19,31 @@
 <div class="left hide" id="comments">
 
     <div id="display-comments" class="left"></div>
-    <div>
+    {{!-- <div>
         <a href="/">
             <img src="./images/arrow.png" alt="go back" id="go-back">
         </a>
 
-    </div>
+    </div> --}}
 
     <form>
         <div class="card-header">
+            <h3>Leave your comment here</h3>
             <div class="bottom-margin ">
-                <input type="text" placeholder="enter your name" id="name">
+                <input type="text" placeholder="Type in your name" id="name" class="input-fields">
             </div>
 
             <div class="bottom-margin ">
-                <input type="text" placeholder="create username" id="username">
+                <input type="text" placeholder="Create username" id="username" class="input-fields">
             </div>
 
             <div>
-                <textarea placeholder="leave your comment here" id="comment"></textarea>
+                <textarea placeholder="Start typing..." id="comment" class="input-fields"></textarea>
             </div>
             <button class="btn btn-dark" type="submit" id="submit">Submit</button>
+            <a href="/">
+                <button class="btn btn-dark" type="submit" id="submit">Go Back</button>
+            </a>
         </div>
     </form>
 </div>

@@ -7,6 +7,7 @@ const path = require("path");
 const PORT = process.env.PORT || 8080;
 const app = express();
 app.use("/", htmlRoutes);
+
 mongoose.connect("mongodb://localhost/vogue", {
   useNewUrlParser: true
 });
@@ -19,9 +20,7 @@ app.use(express.static("public"));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-
 app.use("/api", apiRoutes);
-
 app.listen(PORT, () => {
   console.log("App listening on PORT http://localhost:" + PORT);
 });
