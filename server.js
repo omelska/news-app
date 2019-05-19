@@ -1,24 +1,26 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const db = require("models");
-const cheerio = require("cheerio");
 const exphbs = require("express-handlebars");
-const router = require("./routes/api-routes");
-const router = require("./routes/api-routes");
+const mongoose = require("mongoose");
+const apiRoutes = require("./routes/api-routes");
+const htmlRoutes = require("./routes/html-routes");
 const path = require("path");
-
 const PORT = process.env.PORT || 8080;
 const app = express();
+app.use("/", htmlRoutes);
+mongoose.connect("mongodb://localhost/vogue", {
+  useNewUrlParser: true
+});
 
 app.use(express.static(path.join(__dirname, "/public")));
+
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(express.static("public"));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-app.use("/", router);
+app.use("/api", apiRoutes);
 
 app.listen(PORT, () => {
   console.log("App listening on PORT http://localhost:" + PORT);
