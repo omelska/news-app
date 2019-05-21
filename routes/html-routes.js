@@ -50,9 +50,7 @@ router.get("/celebrity-style", (req, res) => {
 
 router.get("/trends", (req, res) => {
   db.Article.find({
-    category: "Trends",
-    category: "Runway"
-    // category: "Street Style"
+    category: { $in: ["Trends", "Runway", "Street Style"] }
   })
     .then(dbArticle => {
       res.render("index", { articles: dbArticle });
