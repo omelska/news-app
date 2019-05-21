@@ -16,6 +16,10 @@ const ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  category: {
+    type: String,
+    required: true
+  },
   // `comment` is an object that stores a Comments id
   // The ref property links the ObjectId to the Comments model
   // This allows us to populate the Article with an associated Comment

@@ -25,6 +25,9 @@ const scrapeWeb = link => {
       result.link = $(element)
         .find("a.four-story--link")
         .attr("href");
+      result.category = $(element)
+        .find("h4.four-story--category")
+        .text();
       console.log("RESULT", result);
       db.Article.create(result)
         .then(dbArticle => {

@@ -1,4 +1,7 @@
 let id;
+// $(".toUppercase").toUpperCase();
+console.log($(".toUppercase"));
+
 $(".img").on("click", event => {
   console.log(this);
   id = event.target.getAttribute("value");

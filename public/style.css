@@ -19,13 +19,13 @@ a:hover {
 }
 
 .img {
-    width: 200px;
+    width: 250px;
     height: auto;
 }
 
 .box {
     width: 250px;
-    height: 400px;
+    height: 450px;
 }
 
 h2 {
@@ -61,6 +61,11 @@ h3 {
 #logo {
     padding: 20px 0 20px 0;
     height: 20vh;
+    width: auto;
+}
+
+#brand {
+    height: 20px;
     width: auto;
 }
 
@@ -112,4 +117,22 @@ form {
     height: auto;
     position: absolute;
     right: 30px;
+}
+
+.nav-link {
+    color: #1d1d1d;
+}
+
+.nav-link:hover {
+    color: #991f16;
+}
+
+.toUppercase {
+    color: #991f16;
+    text-transform: uppercase;
+}
+
+.bg-light {
+    background: #f7f7f7!important;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
