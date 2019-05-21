@@ -5,12 +5,13 @@ const cheerio = require("cheerio");
 const db = require("../models");
 
 router.use((req, res, next) => {
-  console.log("INSIDE API ROUTES");
+  // console.log("INSIDE API ROUTES");
   next();
 });
 
-router.get("/scrape", (req, res) => {
-  axios.get("https://www.vogue.com/fashion").then(response => {
+const scrapeWeb = link => {
+  axios.get(link).then(response => {
+    console.log("LINK", link);
     const $ = cheerio.load(response.data);
 
     $("li.four-story--item").each((i, element) => {
@@ -33,22 +34,24 @@ router.get("/scrape", (req, res) => {
           console.log(err);
         });
     });
-
-    // $(".feed-card--container").each(element => {
-    //   result.imageURL = $(element)
-    //     .find("img.collection-list--image")
-    //     .attr("srcset");
-    //   result.headline = $(element)
-    //     .find("h2.feed-card--title a")
-    //     .text();
-    //   result.link = $(element)
-    //     .find("h2.feed-card--title")
-    //     .children()
-    //     .attr("href");
-    //   console.log(result);
-    // });
   });
+};
+
+router.get("/scrape", (req, res) => {
+  scrapeWeb("https://www.vogue.com/fashion");
+  scrapeWeb("https://www.vogue.com/fashion/celebrity-style");
+  scrapeWeb("https://www.vogue.com/fashion/shopping");
+  scrapeWeb("https://www.vogue.com/fashion/street-style");
+  scrapeWeb("https://www.vogue.com/fashion/models");
+  scrapeWeb("https://www.vogue.com/fashion/trends");
   res.send("sucess");
+});
+
+router.delete("/delete", (req, res) => {
+  db.Article.deleteMany()
+    .then(s => console.log(s))
+    .catch(err => console.log(err));
+  res.send("removed");
 });
 
 router.get("/articles", (req, res) => {

@@ -73,13 +73,14 @@ const displayComment = comment => {
 const deleteComment = () => {
   $(".delete").on("click", event => {
     let commentId = event.target.getAttribute("value");
+    let parentDiv = event.target.parentElement.parentElement;
 
-    console.log("element", event.target);
     $.ajax({
       url: `/api/comments/${commentId}`,
       type: "DELETE",
       success: result => {
         console.log("Deleted!");
+        parentDiv.remove();
       }
     });
   });

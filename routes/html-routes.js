@@ -4,7 +4,7 @@ const path = require("path");
 const db = require("../models");
 
 router.use(function timeLog(req, res, next) {
-  console.log("INSIDE HTML ROUTES");
+  //   console.log("INSIDE HTML ROUTES");
   next();
 });
 
