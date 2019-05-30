@@ -7,10 +7,9 @@ const path = require("path");
 const PORT = process.env.PORT || 8080;
 const app = express();
 app.use("/", htmlRoutes);
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/vogue";
 
-mongoose.connect("mongodb://localhost/vogue", {
-  useNewUrlParser: true
-});
+mongoose.connect(MONGODB_URI);
 
 app.use(express.static(path.join(__dirname, "/public")));
 
